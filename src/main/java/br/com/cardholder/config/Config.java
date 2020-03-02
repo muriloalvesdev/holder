@@ -22,6 +22,7 @@ public class Config {
 
   @Bean
   public void persistHolder() {
+    repository.deleteAll();
     repository.saveAndFlush(new Holder(HolderName.MASTERCARD, Bank.NUBANK));
   }
 }
