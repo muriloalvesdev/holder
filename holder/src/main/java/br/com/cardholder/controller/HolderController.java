@@ -20,6 +20,7 @@ public class HolderController {
   @PostMapping("accomplish/sale")
   public ResponseEntity<Object> findBankAndCardHolderAndAccomplishSale(
       @RequestBody RequestResource request) {
+    System.out.println("recebida requisicao: " + request);
     return validateTransactionService.findBankAndCardHolderAndAccomplishSale(request);
   }
 

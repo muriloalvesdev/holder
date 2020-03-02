@@ -8,7 +8,7 @@ public class RequestResource {
   private String cardHolderName;
 
   @JsonProperty("bank")
-  private BankDataTransferObject bankDTO;
+  private BankResource bankDTO;
 
   public String getCardHolderName() {
     return cardHolderName;
@@ -18,11 +18,11 @@ public class RequestResource {
     this.cardHolderName = cardHolderName;
   }
 
-  public BankDataTransferObject getBankDTO() {
+  public BankResource getBankDTO() {
     return bankDTO;
   }
 
-  public void setBankDTO(BankDataTransferObject bankDTO) {
+  public void setBankDTO(BankResource bankDTO) {
     this.bankDTO = bankDTO;
   }
 
