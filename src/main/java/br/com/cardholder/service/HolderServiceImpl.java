@@ -9,8 +9,8 @@ import br.com.cardholder.domain.repository.HolderRepository;
 import br.com.cardholder.domain.utils.Bank;
 import br.com.cardholder.domain.utils.HolderName;
 import br.com.cardholder.dto.CardHolderDataTransferObject;
-import br.com.cardholder.dto.RequestResource;
 import br.com.cardholder.exception.CardHolderNameNotFoundException;
+import br.com.cardholder.resource.RequestResource;
 
 @Service
 public class HolderServiceImpl implements HolderService {
@@ -37,8 +37,7 @@ public class HolderServiceImpl implements HolderService {
   }
 
   @Override
-  public ResponseEntity<Object> findBankAndCardHolderAndAccomplishSale(
-      RequestResource request) {
+  public ResponseEntity<Object> findBankAndCardHolderAndAccomplishSale(RequestResource request) {
     LOG.info("Search CardHolder informed [ " + request.getCardHolderName() + " ]");
     try {
       findCardHolder(HolderName.getCardHolderName(request.getCardHolderName()));
@@ -46,7 +45,7 @@ public class HolderServiceImpl implements HolderService {
       LOG.error(
           "CardHolder informed [ " + request.getCardHolderName() + " ] - Error: " + e.getMessage());
     }
-    return holderComponent.sendRequest(request.getBankDTO());
+    return holderComponent.sendRequest(request.getBankResource());
   }
 
   private void findCardHolder(HolderName cardHolderName) throws CardHolderNameNotFoundException {

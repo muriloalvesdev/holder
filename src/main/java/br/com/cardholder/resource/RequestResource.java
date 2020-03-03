@@ -1,4 +1,4 @@
-package br.com.cardholder.dto;
+package br.com.cardholder.resource;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -8,7 +8,7 @@ public class RequestResource {
   private String cardHolderName;
 
   @JsonProperty("bank")
-  private BankResource bankDTO;
+  private BankResource bankResource;
 
   public String getCardHolderName() {
     return cardHolderName;
@@ -18,17 +18,18 @@ public class RequestResource {
     this.cardHolderName = cardHolderName;
   }
 
-  public BankResource getBankDTO() {
-    return bankDTO;
+  public BankResource getBankResource() {
+    return bankResource;
   }
 
-  public void setBankDTO(BankResource bankDTO) {
-    this.bankDTO = bankDTO;
+  public void setBankResource(BankResource bankResource) {
+    this.bankResource = bankResource;
   }
 
   @Override
   public String toString() {
-    return "Request [cardHolderName=" + cardHolderName + ", bankDTO=" + bankDTO + "]";
+    return "RequestResource [cardHolderName=" + cardHolderName + ", bankResource=" + bankResource
+        + "]";
   }
 
 }
