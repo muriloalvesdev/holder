@@ -18,4 +18,9 @@ public class CardHolderDataTransferObject {
     return bank;
   }
 
+  @Override
+  public String toString() {
+    return "CardHolderDataTransferObject [name=" + name + ", bank=" + bank + "]";
+  }
+
 }
