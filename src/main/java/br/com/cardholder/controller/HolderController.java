@@ -2,6 +2,7 @@ package br.com.cardholder.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,15 +21,14 @@ public class HolderController {
 
   @PostMapping("accomplish/sale")
   public ResponseEntity<Object> findBankAndCardHolderAndAccomplishSale(
-      @RequestBody RequestResource request) {
-    System.out.println("recebida requisicao: " + request);
+      @Validated @RequestBody RequestResource request) {
     return validateTransactionService.findBankAndCardHolderAndAccomplishSale(request);
   }
 
   @PostMapping("save")
-  public ResponseEntity<Object> save(@RequestBody CardHolderDataTransferObject cardHolderDTO) {
-    validateTransactionService.save(cardHolderDTO);
-    return ResponseEntity.ok().build();
+  public ResponseEntity<Object> save(
+      @Validated @RequestBody CardHolderDataTransferObject cardHolderDTO) {
+    return ResponseEntity.ok(validateTransactionService.save(cardHolderDTO));
   }
 
   @GetMapping("/scheduling")
