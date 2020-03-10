@@ -1,9 +1,7 @@
 package br.com.cardholder.service;
 
 import java.util.Arrays;
-
 import org.jboss.logging.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -18,11 +16,14 @@ public class HolderComponent {
 
   private static final Logger LOG = Logger.getLogger(HolderComponent.class);
 
-  @Autowired
   private RestTemplate restTemplate;
 
   @Value("${uri.bank.auth}")
   private String uriBankAuth;
+
+  public HolderComponent(RestTemplate restTemplate) {
+    this.restTemplate = restTemplate;
+  }
 
   public ResponseEntity<Object> sendRequest(Object request) {
     LOG.info("Sending message to Module Bank using this Request [ " + request + " ]");

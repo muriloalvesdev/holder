@@ -1,7 +1,6 @@
 package br.com.cardholder.service;
 
 import org.jboss.logging.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import br.com.cardholder.domain.model.Holder;
@@ -17,11 +16,13 @@ public class HolderServiceImpl implements HolderService {
 
   private static final Logger LOG = Logger.getLogger(HolderServiceImpl.class);
 
-  @Autowired
   private HolderRepository cardHolderRepository;
-
-  @Autowired
   private HolderComponent holderComponent;
+
+  public HolderServiceImpl(HolderRepository cardHolderRepository, HolderComponent holderComponent) {
+    this.cardHolderRepository = cardHolderRepository;
+    this.holderComponent = holderComponent;
+  }
 
   @Override
   public Holder save(CardHolderDataTransferObject cardHolderDTO) {
