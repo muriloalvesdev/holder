@@ -43,4 +43,10 @@ public class CardResource {
     this.validate = validate;
   }
 
+  @Override
+  public String toString() {
+    return "CardResource [securityCode=" + securityCode + ", cardNumber=" + cardNumber
+        + ", validate=" + validate + "]";
+  }
+
 }
