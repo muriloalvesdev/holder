@@ -7,8 +7,7 @@ import br.com.cardholder.dto.CardHolderDataTransferObject;
 import br.com.cardholder.resource.RequestResource;
 
 public interface HolderService {
-    Holder save(CardHolderDataTransferObject cardHolderDTO);
+  Holder save(CardHolderDataTransferObject cardHolderDTO);
 
-    ResponseEntity<Object> findBankAndCardHolderAndAccomplishSale(
-            RequestResource request);
+  ResponseEntity<Object> findBankAndCardHolderAndAccomplishSale(RequestResource request);
 }

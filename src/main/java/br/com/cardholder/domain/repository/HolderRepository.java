@@ -11,5 +11,5 @@ import br.com.cardholder.domain.utils.HolderName;
 
 @Repository
 public interface HolderRepository extends JpaRepository<Holder, UUID> {
-    Optional<Holder> findByName(HolderName holderName);
+  Optional<Holder> findByName(HolderName holderName);
 }
