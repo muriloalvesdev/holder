@@ -17,11 +17,11 @@ public class HolderServiceImpl implements HolderService {
   private static final Logger LOG = Logger.getLogger(HolderServiceImpl.class);
 
   private HolderRepository cardHolderRepository;
-  private HolderComponent holderComponent;
+  private SendRequest sendRequest;
 
-  public HolderServiceImpl(HolderRepository cardHolderRepository, HolderComponent holderComponent) {
+  public HolderServiceImpl(HolderRepository cardHolderRepository, SendRequest sendRequest) {
     this.cardHolderRepository = cardHolderRepository;
-    this.holderComponent = holderComponent;
+    this.sendRequest = sendRequest;
   }
 
   @Override
@@ -40,7 +40,7 @@ public class HolderServiceImpl implements HolderService {
   }
 
   @Override
-  public ResponseEntity<Object> findBankAndCardHolderAndAccomplishSale(RequestResource request) {
+  public ResponseEntity<Object> accomplishSale(RequestResource request) {
     LOG.info("Search CardHolder informed [ " + request.getCardHolderName() + " ]");
     try {
       findCardHolder(HolderName.getCardHolderName(request.getCardHolderName()));
@@ -48,7 +48,7 @@ public class HolderServiceImpl implements HolderService {
       LOG.error(
           "CardHolder informed [ " + request.getCardHolderName() + " ] - Error: " + e.getMessage());
     }
-    return holderComponent.sendRequest(request.getBankResource());
+    return sendRequest.send(request.getBankResource());
   }
 
   private void findCardHolder(HolderName cardHolderName) throws CardHolderNameNotFoundException {
