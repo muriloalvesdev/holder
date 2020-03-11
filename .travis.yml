@@ -17,4 +17,4 @@ before_install:
   - psql -c 'create database "holder";' -U postgres
 
 script:
-  - mvn clean install
+  - mvn clean install -DskipTests
