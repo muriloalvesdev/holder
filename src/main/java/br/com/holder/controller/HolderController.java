@@ -19,10 +19,8 @@ public class HolderController {
   private HolderService validateTransactionService;
 
   @PostMapping("accomplish/sale")
-  public ResponseEntity<Object> findBankAndCardHolderAndAccomplishSale(
-      @RequestBody RequestResource request) {
-    System.out.println("recebida requisicao: " + request);
-    return validateTransactionService.findBankAndCardHolderAndAccomplishSale(request);
+  public ResponseEntity<Object> accomplishSale(@RequestBody RequestResource request) {
+    return validateTransactionService.accomplishSale(request);
   }
 
   @PostMapping("save")
@@ -31,8 +29,8 @@ public class HolderController {
     return ResponseEntity.ok().build();
   }
 
-  @GetMapping("/scheduling")
-  public ResponseEntity<String> scheduling() {
+  @GetMapping("/")
+  public ResponseEntity<String> ok() {
     return ResponseEntity.ok("OK");
   }
 
