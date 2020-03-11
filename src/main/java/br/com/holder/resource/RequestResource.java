@@ -1,4 +1,4 @@
-package br.com.cardholder.resource;
+package br.com.holder.resource;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

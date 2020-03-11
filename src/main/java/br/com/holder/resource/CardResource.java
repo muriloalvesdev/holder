@@ -1,4 +1,4 @@
-package br.com.cardholder.resource;
+package br.com.holder.resource;
 
 import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -41,12 +41,6 @@ public class CardResource {
 
   public void setValidate(String validate) {
     this.validate = validate;
-  }
-
-  @Override
-  public String toString() {
-    return "CardResource [securityCode=" + securityCode + ", cardNumber=" + cardNumber
-        + ", validate=" + validate + "]";
   }
 
 }

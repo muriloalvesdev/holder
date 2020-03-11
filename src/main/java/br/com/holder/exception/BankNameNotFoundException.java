@@ -1,4 +1,4 @@
-package br.com.cardholder.exception;
+package br.com.holder.exception;
 
 public class BankNameNotFoundException extends RuntimeException {
 

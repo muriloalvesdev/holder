@@ -1,15 +1,15 @@
-package br.com.cardholder.service;
+package br.com.holder.service;
 
 import org.jboss.logging.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import br.com.cardholder.domain.model.Holder;
-import br.com.cardholder.domain.repository.HolderRepository;
-import br.com.cardholder.domain.utils.Bank;
-import br.com.cardholder.domain.utils.HolderName;
-import br.com.cardholder.dto.CardHolderDataTransferObject;
-import br.com.cardholder.exception.CardHolderNameNotFoundException;
-import br.com.cardholder.resource.RequestResource;
+import br.com.holder.domain.model.Holder;
+import br.com.holder.domain.repository.HolderRepository;
+import br.com.holder.domain.utils.Bank;
+import br.com.holder.domain.utils.HolderName;
+import br.com.holder.dto.CardHolderDataTransferObject;
+import br.com.holder.exception.CardHolderNameNotFoundException;
+import br.com.holder.resource.RequestResource;
 
 @Service
 public class HolderServiceImpl implements HolderService {
@@ -27,15 +27,16 @@ public class HolderServiceImpl implements HolderService {
   @Override
   public CardHolderDataTransferObject save(CardHolderDataTransferObject cardHolderDTO) {
     try {
-      HolderName holderName = HolderName.getCardHolderName(cardHolderDTO.getName());
 
+      HolderName holderName = HolderName.getCardHolderName(cardHolderDTO.getName());
       Bank bank = Bank.getBankName(cardHolderDTO.getBank());
-      cardHolderRepository.save(new Holder(holderName, bank));
-      return cardHolderDTO;
+      cardHolderRepository.saveAndFlush(new Holder(holderName, bank));
+
     } catch (CardHolderNameNotFoundException e) {
-      throw new RuntimeException("Error trying to save card banner: " + e.getMessage(), e);
+      LOG.error("Error trying to save card banner: " + e.getMessage(), e);
     }
 
+    return cardHolderDTO;
   }
 
   @Override
