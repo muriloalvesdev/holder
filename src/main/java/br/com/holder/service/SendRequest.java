@@ -8,24 +8,24 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-@Component
-public class HolderComponent {
+@Service
+public class SendRequest {
 
-  private static final Logger LOG = Logger.getLogger(HolderComponent.class);
+  private static final Logger LOG = Logger.getLogger(SendRequest.class);
 
   private RestTemplate restTemplate;
 
   @Value("${uri.bank.auth}")
   private String uriBankAuth;
 
-  public HolderComponent(RestTemplate restTemplate) {
+  public SendRequest(RestTemplate restTemplate) {
     this.restTemplate = restTemplate;
   }
 
-  public ResponseEntity<Object> sendRequest(Object request) {
+  public ResponseEntity<Object> send(Object request) {
     LOG.info("Sending message to Module Bank using this Request [ " + request + " ]");
     return restTemplate.exchange(uriBankAuth, HttpMethod.POST,
         getHttpEntity(request, getHttpHeaders()), Object.class);
