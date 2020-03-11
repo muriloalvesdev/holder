@@ -25,16 +25,18 @@ public class HolderServiceImpl implements HolderService {
   }
 
   @Override
-  public Holder save(CardHolderDataTransferObject cardHolderDTO) {
+  public CardHolderDataTransferObject save(CardHolderDataTransferObject cardHolderDTO) {
     try {
-      HolderName holderName = HolderName.getCardHolderName(cardHolderDTO.getName());
 
+      HolderName holderName = HolderName.getCardHolderName(cardHolderDTO.getName());
       Bank bank = Bank.getBankName(cardHolderDTO.getBank());
-      return cardHolderRepository.save(new Holder(holderName, bank));
+      cardHolderRepository.saveAndFlush(new Holder(holderName, bank));
+
     } catch (CardHolderNameNotFoundException e) {
-      throw new RuntimeException("Error trying to save card banner: " + e.getMessage(), e);
+      LOG.error("Error trying to save card banner: " + e.getMessage(), e);
     }
 
+    return cardHolderDTO;
   }
 
   @Override
