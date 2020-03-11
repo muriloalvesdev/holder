@@ -6,5 +6,5 @@
 ### Descrição da API accomplishSale
 ![accomplishSale](https://github.com/muriloalvesdev/holder/blob/master/src/main/resources/swagger/swagger-accomplish-sale.png)
 
-### Descrição da API saleController
-![saleController](https://github.com/muriloalvesdev/holder/blob/master/src/main/resources/swagger/swagger-save.png)
+### Descrição da API save
+![save](https://github.com/muriloalvesdev/holder/blob/master/src/main/resources/swagger/swagger-save.png)
