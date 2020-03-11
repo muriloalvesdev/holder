@@ -1,4 +1,4 @@
-package br.com.cardholder.domain.model;
+package br.com.holder.domain.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

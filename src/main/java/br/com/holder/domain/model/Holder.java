@@ -1,4 +1,4 @@
-package br.com.cardholder.domain.model;
+package br.com.holder.domain.model;
 
 import java.util.UUID;
 import javax.persistence.Column;
@@ -10,8 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import br.com.cardholder.domain.utils.Bank;
-import br.com.cardholder.domain.utils.HolderName;
+import br.com.holder.domain.utils.Bank;
+import br.com.holder.domain.utils.HolderName;
 
 @Entity
 @Table(name = "holder", uniqueConstraints = {@UniqueConstraint(columnNames = {"name"})})

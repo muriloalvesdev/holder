@@ -1,4 +1,4 @@
-package br.com.cardholder.service;
+package br.com.holder.service;
 
 import java.util.Arrays;
 import org.jboss.logging.Logger;
@@ -27,17 +27,15 @@ public class HolderComponent {
 
   public ResponseEntity<Object> sendRequest(Object request) {
     LOG.info("Sending message to Module Bank using this Request [ " + request + " ]");
-    HttpHeaders headers = createHttpHeaders();
-    HttpEntity<Object> entity = createHttpEntity(request, headers);
-    return restTemplate.exchange(uriBankAuth, HttpMethod.POST, entity, Object.class);
+    return restTemplate.exchange(uriBankAuth, HttpMethod.POST,
+        getHttpEntity(request, getHttpHeaders()), Object.class);
   }
 
-  private HttpEntity<Object> createHttpEntity(Object request, HttpHeaders headers) {
-    HttpEntity<Object> entity = new HttpEntity<Object>(request, headers);
-    return entity;
+  private HttpEntity<Object> getHttpEntity(Object request, HttpHeaders headers) {
+    return new HttpEntity<Object>(request, headers);
   }
 
-  private HttpHeaders createHttpHeaders() {
+  private HttpHeaders getHttpHeaders() {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
     return headers;

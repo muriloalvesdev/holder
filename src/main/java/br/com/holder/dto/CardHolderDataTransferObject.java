@@ -1,4 +1,4 @@
-package br.com.cardholder.dto;
+package br.com.holder.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -16,11 +16,6 @@ public class CardHolderDataTransferObject {
 
   public String getBank() {
     return bank;
-  }
-
-  @Override
-  public String toString() {
-    return "CardHolderDataTransferObject [name=" + name + ", bank=" + bank + "]";
   }
 
 }

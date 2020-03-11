@@ -1,13 +1,13 @@
-package br.com.cardholder.config;
+package br.com.holder.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
-import br.com.cardholder.domain.model.Holder;
-import br.com.cardholder.domain.repository.HolderRepository;
-import br.com.cardholder.domain.utils.Bank;
-import br.com.cardholder.domain.utils.HolderName;
+import br.com.holder.domain.model.Holder;
+import br.com.holder.domain.repository.HolderRepository;
+import br.com.holder.domain.utils.Bank;
+import br.com.holder.domain.utils.HolderName;
 
 @Configuration
 public class Config {

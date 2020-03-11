@@ -1,16 +1,15 @@
-package br.com.cardholder.controller;
+package br.com.holder.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.cardholder.dto.CardHolderDataTransferObject;
-import br.com.cardholder.resource.RequestResource;
-import br.com.cardholder.service.HolderService;
+import br.com.holder.dto.CardHolderDataTransferObject;
+import br.com.holder.resource.RequestResource;
+import br.com.holder.service.HolderService;
 
 @RestController
 @RequestMapping("api/holder")
@@ -21,14 +20,15 @@ public class HolderController {
 
   @PostMapping("accomplish/sale")
   public ResponseEntity<Object> findBankAndCardHolderAndAccomplishSale(
-      @Validated @RequestBody RequestResource request) {
+      @RequestBody RequestResource request) {
+    System.out.println("recebida requisicao: " + request);
     return validateTransactionService.findBankAndCardHolderAndAccomplishSale(request);
   }
 
   @PostMapping("save")
-  public ResponseEntity<Object> save(
-      @Validated @RequestBody CardHolderDataTransferObject cardHolderDTO) {
-    return ResponseEntity.ok(validateTransactionService.save(cardHolderDTO));
+  public ResponseEntity<Object> save(@RequestBody CardHolderDataTransferObject cardHolderDTO) {
+    validateTransactionService.save(cardHolderDTO);
+    return ResponseEntity.ok().build();
   }
 
   @GetMapping("/scheduling")

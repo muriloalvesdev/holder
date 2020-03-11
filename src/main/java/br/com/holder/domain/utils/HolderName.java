@@ -1,8 +1,7 @@
-package br.com.cardholder.domain.utils;
+package br.com.holder.domain.utils;
 
 import java.util.Arrays;
-
-import br.com.cardholder.exception.CardHolderNameNotFoundException;
+import br.com.holder.exception.CardHolderNameNotFoundException;
 
 public enum HolderName {
   MASTERCARD("MASTERCARD");
