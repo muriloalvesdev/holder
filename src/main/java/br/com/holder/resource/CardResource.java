@@ -10,7 +10,7 @@ public class CardResource {
   @NotNull
   private String securityCode;
 
-  @JsonProperty("card_holder")
+  @JsonProperty("card_number")
   @NotNull
   private String cardNumber;
 
