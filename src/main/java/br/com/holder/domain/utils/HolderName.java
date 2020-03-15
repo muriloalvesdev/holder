@@ -1,7 +1,7 @@
 package br.com.holder.domain.utils;
 
+import java.security.InvalidParameterException;
 import java.util.Arrays;
-import br.com.holder.exception.CardHolderNameNotFoundException;
 
 public enum HolderName {
   MASTERCARD("MASTERCARD");
@@ -16,11 +16,9 @@ public enum HolderName {
     return cardHolderName;
   }
 
-  public static HolderName getCardHolderName(String cardHolderName)
-      throws CardHolderNameNotFoundException {
+  public static HolderName getHolderName(String cardHolderName) {
     return Arrays.asList(HolderName.values()).stream()
         .filter(cardHolder -> cardHolder.getCardHolderName().equals(cardHolderName.toUpperCase()))
-        .findFirst()
-        .orElseThrow(() -> new CardHolderNameNotFoundException("Card Holder Not Found!"));
+        .findFirst().orElseThrow(() -> new InvalidParameterException("Card Holder Not Found!"));
   }
 }
