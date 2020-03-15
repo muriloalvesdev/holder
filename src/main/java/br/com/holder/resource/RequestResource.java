@@ -1,13 +1,16 @@
 package br.com.holder.resource;
 
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RequestResource {
 
   @JsonProperty("name")
+  @NotNull(message = "name is required!")
   private String cardHolderName;
 
   @JsonProperty("bank")
+  @NotNull(message = "bank is required!")
   private BankResource bankResource;
 
   public String getCardHolderName() {

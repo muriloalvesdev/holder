@@ -1,7 +1,7 @@
 package br.com.holder.domain.utils;
 
+import java.security.InvalidParameterException;
 import java.util.Arrays;
-import br.com.holder.exception.BankNameNotFoundException;
 
 public enum Bank {
   NUBANK("NUBANK");
@@ -19,6 +19,6 @@ public enum Bank {
   public static Bank getBankName(String bankName) {
     return Arrays.asList(Bank.values()).stream()
         .filter(bank -> bank.getBankName().equals(bankName.toUpperCase())).findFirst()
-        .orElseThrow(() -> new BankNameNotFoundException("Bank Name not found!"));
+        .orElseThrow(() -> new InvalidParameterException("Bank Name not found!"));
   }
 }
